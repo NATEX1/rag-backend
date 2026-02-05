@@ -4,13 +4,17 @@ A Retrieval-Augmented Generation (RAG) system for college document Q&A using Oll
 
 ## Architecture
 
-- **Backend**: FastAPI with Ollama LLM and ChromaDB vector storage
-- **Frontend**: React with Ant Design UI components
+This project is split into two separate repositories:
+
+- **rag-backend**: FastAPI with Ollama LLM and ChromaDB vector storage
+- **rag-frontend**: React with Ant Design UI components
 
 ## Setup
 
-### Backend
+### Backend (rag-backend)
 ```bash
+cd rag-backend
+
 # Create virtual environment
 python -m venv .venv
 source .venv/bin/activate  # or .venv\Scripts\activate on Windows
@@ -29,26 +33,31 @@ ollama pull nomic-embed-text
 uvicorn app.main:app --reload
 ```
 
-### Frontend
+### Frontend (rag-frontend)
 ```bash
-cd frontend
+cd rag-frontend
+
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
 ```
 
 ## Configuration
 
-Copy `.env.example` to `.env` and configure:
+Copy `rag-backend/.env.example` to `rag-backend/.env` and configure:
 - Ollama settings (default: localhost:11434)
 - ChromaDB path
 - Document processing settings
 
 ## Usage
 
-1. Upload PDF/TXT documents via the web interface
-2. Documents are automatically chunked and embedded
-3. Ask questions about the uploaded documents
-4. Get AI-generated answers with source citations
+1. Start both backend and frontend servers
+2. Upload PDF/TXT documents via the web interface
+3. Documents are automatically chunked and embedded
+4. Ask questions about the uploaded documents
+5. Get AI-generated answers with source citations
 
 ## Features
 
@@ -57,3 +66,21 @@ Copy `.env.example` to `.env` and configure:
 - LLM-powered question answering
 - Source citation tracking
 - System statistics dashboard
+- Crimson theme with minimal design
+
+## Repository Structure
+
+```
+pic-rag/
+├── rag-backend/     # FastAPI backend repository
+├── rag-frontend/    # React frontend repository
+├── .env            # Local configuration
+├── .gitignore      # Git ignore rules
+└── README.md       # This file
+```
+
+## Deployment
+
+Each repository can be deployed independently:
+- Backend: Deploy to any cloud platform supporting Python/FastAPI
+- Frontend: Deploy to any static hosting service (Vercel, Netlify, etc.)
