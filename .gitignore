@@ -6,6 +6,9 @@ ENV/
 env.bak/
 venv.bak/
 
+# Keep local .env but ignore it in subrepos
+.env
+
 # IDE
 .vscode/
 .idea/
